@@ -8,6 +8,7 @@ class ParityGame:
     def __init__(self):
         self.bdd: _bdd.BDD = None
         self.variable_size: int = 0
+        self.d: int = 0
         self.variables = []
         self.states: List[str] = ['o']
         self.primed_states: List[str] = ['O']
@@ -30,6 +31,7 @@ class ParityGame:
         new.primed_states = self.primed_states
         new.primed = self.primed
         new.unprimed = self.unprimed
+        new.d = self.d
 
         return new
 
@@ -56,6 +58,7 @@ class ParityGame:
         self.bdd = _bdd.BDD()
         self.variable_size = parsed_pg.size.bit_length()
         self.parsed_pg = parsed_pg
+        self.d = max(self.parsed_pg.parities.keys())
 
         self.variables = ["o", "O"]
         for i in range(0, self.variable_size):
@@ -101,6 +104,9 @@ class ParityGame:
         self.V0 = self.V & self.bdd.add_expr('o')
         self.V1 = self.V & self.bdd.add_expr('~o')
         self.E = self.bdd.add_expr(' /\ '.join(e))
+
+        for p in range(0, self.d + 1):
+            self.parities[p] = self.bdd.false
 
         for p in self.parsed_pg.parities.keys():
             v = []
