@@ -46,29 +46,35 @@ def main():
         game = ParityGame()
         game.from_parsed(parsed_result)
 
-        w0, w1 = zielonka(game)
+        zielonka = ZielonkaSolver(game)
+        w0, w1 = zielonka.solve()
+
         print_result_from_bdd(game, 0, w0)
         print_result_from_bdd(game, 1, w1)
+
     elif args.fixpoint:
         print("Fixpoint is not yet implemented")
+
     elif args.qpz:
         game = ParityGame()
         game.from_parsed(parsed_result)
 
-        i = game.d % 2
-        wi = qpz(game, game.d, game.parsed_pg.size, game.parsed_pg.size)
-        wj = game.V & ~wi
-
-        w0 = wi if i == 0 else wj
-        w1 = wj if i == 0 else wi
+        qpz = QPZSolver(game)
+        (w0, w1) = qpz.solve()
 
         print_result_from_bdd(game, 0, w0)
         print_result_from_bdd(game, 1, w1)
+
     elif args.spm:
-        spm = SmallProgressMeasuresSolver(parsed_result)
-        (v0, v1, strategy0) = spm.solve()
-        print_result_from_graph(0, v0, strategy0)
-        print_result_from_graph(1, v1)
+        spm0 = SmallProgressMeasuresSolver(parsed_result, 0)
+        (w0, strategy0) = spm0.solve()
+
+        spm1 = SmallProgressMeasuresSolver(parsed_result.create_subgame(set(w0)), 1)
+        (w1, strategy1) = spm1.solve()
+
+        print_result_from_graph(0, w0, strategy0)
+        print_result_from_graph(1, w1, strategy1)
+
 
 if __name__ == '__main__':
     main()

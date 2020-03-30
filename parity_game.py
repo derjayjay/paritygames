@@ -35,19 +35,12 @@ class ParityGame:
 
         return new
 
-    def setminus(self, a):
+    def subgame(self, a):
         remove = set()
         for i in self.bdd.pick_iter(a, care_vars=self.states):
             remove.add(self.variable_to_identifier(i))
 
-        new_parsed = ParsedParityGame()
-        new_parsed.size = self.parsed_pg.size
-        for n in self.parsed_pg.nodes.keys():
-            if n not in remove:
-                nn = deepcopy(self.parsed_pg.nodes[n])
-                nn.successors -= remove
-                new_parsed.add_node(nn)
-        new_parsed.populate()
+        new_parsed = self.parsed_pg.create_subgame(remove)
 
         new_game = copy(self)
         new_game.parsed_pg = new_parsed
@@ -105,9 +98,6 @@ class ParityGame:
         self.V1 = self.V & self.bdd.add_expr('~o')
         self.E = self.bdd.add_expr(' /\ '.join(e))
 
-        for p in range(0, self.d + 1):
-            self.parities[p] = self.bdd.false
-
         for p in self.parsed_pg.parities.keys():
             v = []
             for n in self.parsed_pg.parities[p]:
@@ -119,6 +109,11 @@ class ParityGame:
             return self.V0
         else:
             return self.V1
+
+    def get_parity(self, p: int):
+        if p not in self.parities.keys():
+            return self.bdd.false
+        return self.parities[p]
 
     def node_to_variable(self, node: ParsedNode, primed=False):
         return self.raw_node_to_variable(node.identifier, node.owner, primed)

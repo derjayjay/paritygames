@@ -4,6 +4,7 @@ from parser.parity_gameParser import parity_gameParser
 from parser.parity_gameListener import parity_gameListener
 from pathlib import Path
 from typing import List, Set, Dict
+from copy import deepcopy
 
 
 class ParsedNode:
@@ -52,6 +53,18 @@ class ParsedParityGame:
                 self.parities[node.parity] = {node.identifier}
             else:
                 self.parities[node.parity].add(node.identifier)
+
+    def create_subgame(self, remove: Set[int]):
+        new = ParsedParityGame()
+        new.size = self.size
+        for n in self.nodes.keys():
+            if n not in remove:
+                nn = deepcopy(self.nodes[n])
+                nn.successors -= remove
+                new.add_node(nn)
+        new.populate()
+        return new
+
 
 
 class ParityGamePrintListener(parity_gameListener):

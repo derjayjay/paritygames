@@ -53,6 +53,22 @@ What ws the result?
 * implemented the algorithms as described on the lecture slides
 * impleneted a way to extract the required stated information from a given BDD
 
+#### Tue, Mar 25
+
+Which part of the program did you work on? 
+
+* command line arguments
+* printing of results according to specification
+
+What was the goal?
+
+* having the program usable from the command line to automatically test implementation against test set 
+and compare with pgsolver
+
+What ws the result?
+
+* the Zielonka algorithm implementation seems to be working 
+
 
 
 

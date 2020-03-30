@@ -5,7 +5,7 @@ from itertools import cycle, zip_longest
 
 
 class SmallProgressMeasuresSolver(GameSolver):
-    def __init__(self, game: ParsedParityGame):
+    def __init__(self, game: ParsedParityGame, player: int):
         super().__init__()
         self.game: ParsedParityGame = game
         self.V: List[int] = self.game.nodes.keys()
@@ -13,33 +13,27 @@ class SmallProgressMeasuresSolver(GameSolver):
         self.pi: Dict[int, List[int]] = {}
         self.max_parity = max(self.game.parities.keys())
         self.failed = 0
+        self.player = player
         self.max_pi = [0 for i in range(0, self.max_parity + 1)]
         for p in self.game.parities.keys():
             self.max_pi[p] = len(self.game.parities[p])
 
     def solve(self):
         for n in self.V:
-            pr = []
-            for i in range(0, self.max_parity + 1):
-                pr.append(0)
-            self.pi[n] = pr
+            self.pi[n] = [0 for i in range(0, self.max_parity + 1)]
 
         self.small_progress_measures()
 
-        v0 = []
-        v1 = []
-        strategy0 = {}
+        win = []
+        strategy = {}
 
         for n in self.V:
             if self.pi[n]:
-                v0.append(n)
-                if self.game.nodes[n].owner == 0:
-                    strategy0[n] = self.find_strategy(n)
-            else:
-                v1.append(n)
+                win.append(n)
+                if self.game.nodes[n].owner == self.player:
+                    strategy[n] = self.find_strategy(n)
 
-        print(strategy0)
-        return (v0, v1, strategy0)
+        return (win,strategy)
 
     def small_progress_measures(self):
         v = self.next_vertex()
@@ -85,7 +79,7 @@ class SmallProgressMeasuresSolver(GameSolver):
         for w in n.successors:
             measures.append(self.prog(v, w))
 
-        if n.owner == 0:
+        if n.owner == self.player:
             return self.min(measures)
         else:
             return self.max(measures)
@@ -97,7 +91,7 @@ class SmallProgressMeasuresSolver(GameSolver):
         if not mw:
             return []
 
-        if p % 2 == 1:
+        if p % 2 == (1 - self.player):
             m[p] = mw[p] + 1
             if m[p] > self.max_pi[p]:
                 return []
@@ -105,7 +99,7 @@ class SmallProgressMeasuresSolver(GameSolver):
             m[p] = mw[p]
 
         for i in range(p + 1, self.max_parity + 1):
-            if i % 2 == 0:
+            if i % 2 == self.player:
                 continue
             m[i] = mw[i]
 
