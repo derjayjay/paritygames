@@ -30,10 +30,10 @@ def print_result_from_graph(player, w, strategy=None):
 def main():
     cmd = argparse.ArgumentParser(prog="solve.py", description="Parity game solver for the Reactive Synthesis lecture")
     g = cmd.add_mutually_exclusive_group(required=True)
-    g.add_argument('--zielonka', action='store_true')
-    g.add_argument('--qpz', action='store_true')
-    g.add_argument('--spm', action='store_true')
-    cmd.add_argument('file', metavar='FILE', type=str)
+    g.add_argument('--zielonka', help="use symbolic Zielonka for solving", action='store_true')
+    g.add_argument('--qpz', help="use symbolic QPZ for solving", action='store_true')
+    g.add_argument('--spm', help="use non-symbolic Small Progress Measures for solving and strategy extraction", action='store_true')
+    cmd.add_argument('file', metavar='FILE', type=str, help="the game to solve in PGSolver format")
 
     args = cmd.parse_args()
 
