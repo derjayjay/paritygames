@@ -11,24 +11,27 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\13")
-        buf.write("8\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
-        buf.write("\t\b\4\t\t\t\3\2\3\2\6\2\25\n\2\r\2\16\2\26\3\3\3\3\3")
-        buf.write("\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4$\n\4\3\4\3\4\3")
-        buf.write("\5\3\5\3\5\7\5+\n\5\f\5\16\5.\13\5\3\6\3\6\3\7\3\7\3\b")
-        buf.write("\3\b\3\t\3\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\3\3\2\b\t\2")
-        buf.write("\62\2\22\3\2\2\2\4\30\3\2\2\2\6\34\3\2\2\2\b\'\3\2\2\2")
-        buf.write("\n/\3\2\2\2\f\61\3\2\2\2\16\63\3\2\2\2\20\65\3\2\2\2\22")
-        buf.write("\24\5\4\3\2\23\25\5\6\4\2\24\23\3\2\2\2\25\26\3\2\2\2")
-        buf.write("\26\24\3\2\2\2\26\27\3\2\2\2\27\3\3\2\2\2\30\31\7\3\2")
-        buf.write("\2\31\32\7\t\2\2\32\33\7\4\2\2\33\5\3\2\2\2\34\35\5\f")
-        buf.write("\7\2\35\36\5\16\b\2\36\37\5\n\6\2\37#\5\b\5\2 !\7\5\2")
-        buf.write("\2!\"\7\n\2\2\"$\7\6\2\2# \3\2\2\2#$\3\2\2\2$%\3\2\2\2")
-        buf.write("%&\7\4\2\2&\7\3\2\2\2\',\5\20\t\2()\7\7\2\2)+\5\20\t\2")
-        buf.write("*(\3\2\2\2+.\3\2\2\2,*\3\2\2\2,-\3\2\2\2-\t\3\2\2\2.,")
-        buf.write("\3\2\2\2/\60\7\b\2\2\60\13\3\2\2\2\61\62\t\2\2\2\62\r")
-        buf.write("\3\2\2\2\63\64\t\2\2\2\64\17\3\2\2\2\65\66\t\2\2\2\66")
-        buf.write("\21\3\2\2\2\5\26#,")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\f")
+        buf.write("E\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
+        buf.write("\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3\2\3\2\5\2\31\n\2\3\2")
+        buf.write("\6\2\34\n\2\r\2\16\2\35\3\3\3\3\3\3\3\3\3\4\3\4\3\4\3")
+        buf.write("\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5/\n\5\3\5\3\5\3\6\3")
+        buf.write("\6\3\6\7\6\66\n\6\f\6\16\69\13\6\3\7\3\7\3\b\3\b\3\t\3")
+        buf.write("\t\3\n\3\n\3\13\3\13\3\13\2\2\f\2\4\6\b\n\f\16\20\22\24")
+        buf.write("\2\3\3\2\t\n\2>\2\26\3\2\2\2\4\37\3\2\2\2\6#\3\2\2\2\b")
+        buf.write("\'\3\2\2\2\n\62\3\2\2\2\f:\3\2\2\2\16<\3\2\2\2\20>\3\2")
+        buf.write("\2\2\22@\3\2\2\2\24B\3\2\2\2\26\30\5\4\3\2\27\31\5\6\4")
+        buf.write("\2\30\27\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32\34\5\b")
+        buf.write("\5\2\33\32\3\2\2\2\34\35\3\2\2\2\35\33\3\2\2\2\35\36\3")
+        buf.write("\2\2\2\36\3\3\2\2\2\37 \7\3\2\2 !\7\n\2\2!\"\7\4\2\2\"")
+        buf.write("\5\3\2\2\2#$\7\5\2\2$%\5\24\13\2%&\7\4\2\2&\7\3\2\2\2")
+        buf.write("\'(\5\16\b\2()\5\20\t\2)*\5\f\7\2*.\5\n\6\2+,\7\6\2\2")
+        buf.write(",-\7\13\2\2-/\7\7\2\2.+\3\2\2\2./\3\2\2\2/\60\3\2\2\2")
+        buf.write("\60\61\7\4\2\2\61\t\3\2\2\2\62\67\5\22\n\2\63\64\7\b\2")
+        buf.write("\2\64\66\5\22\n\2\65\63\3\2\2\2\669\3\2\2\2\67\65\3\2")
+        buf.write("\2\2\678\3\2\2\28\13\3\2\2\29\67\3\2\2\2:;\7\t\2\2;\r")
+        buf.write("\3\2\2\2<=\t\2\2\2=\17\3\2\2\2>?\t\2\2\2?\21\3\2\2\2@")
+        buf.write("A\t\2\2\2A\23\3\2\2\2BC\t\2\2\2C\25\3\2\2\2\6\30\35.\67")
         return buf.getvalue()
 
 
@@ -42,23 +45,26 @@ class parity_gameParser ( Parser ):
 
     sharedContextCache = PredictionContextCache()
 
-    literalNames = [ "<INVALID>", "'parity'", "';'", "'[\"'", "'\"]'", "','" ]
+    literalNames = [ "<INVALID>", "'parity'", "';'", "'start'", "'[\"'", 
+                     "'\"'", "','" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
-                      "<INVALID>", "<INVALID>", "BOOL", "NUMBER", "NAME", 
-                      "WS" ]
+                      "<INVALID>", "<INVALID>", "<INVALID>", "BOOL", "NUMBER", 
+                      "NAME", "WS" ]
 
     RULE_game = 0
     RULE_preamble = 1
-    RULE_node = 2
-    RULE_successors = 3
-    RULE_owner = 4
-    RULE_identifier = 5
-    RULE_parity = 6
-    RULE_successor = 7
+    RULE_start = 2
+    RULE_node = 3
+    RULE_successors = 4
+    RULE_owner = 5
+    RULE_identifier = 6
+    RULE_parity = 7
+    RULE_successor = 8
+    RULE_start_node = 9
 
-    ruleNames =  [ "game", "preamble", "node", "successors", "owner", "identifier", 
-                   "parity", "successor" ]
+    ruleNames =  [ "game", "preamble", "start", "node", "successors", "owner", 
+                   "identifier", "parity", "successor", "start_node" ]
 
     EOF = Token.EOF
     T__0=1
@@ -66,10 +72,11 @@ class parity_gameParser ( Parser ):
     T__2=3
     T__3=4
     T__4=5
-    BOOL=6
-    NUMBER=7
-    NAME=8
-    WS=9
+    T__5=6
+    BOOL=7
+    NUMBER=8
+    NAME=9
+    WS=10
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -88,6 +95,10 @@ class parity_gameParser ( Parser ):
 
         def preamble(self):
             return self.getTypedRuleContext(parity_gameParser.PreambleContext,0)
+
+
+        def start(self):
+            return self.getTypedRuleContext(parity_gameParser.StartContext,0)
 
 
         def node(self, i:int=None):
@@ -118,15 +129,23 @@ class parity_gameParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 16
+            self.state = 20
             self.preamble()
-            self.state = 18 
+            self.state = 22
+            self._errHandler.sync(self)
+            _la = self._input.LA(1)
+            if _la==parity_gameParser.T__2:
+                self.state = 21
+                self.start()
+
+
+            self.state = 25 
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while True:
-                self.state = 17
+                self.state = 24
                 self.node()
-                self.state = 20 
+                self.state = 27 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if not (_la==parity_gameParser.BOOL or _la==parity_gameParser.NUMBER):
@@ -170,11 +189,56 @@ class parity_gameParser ( Parser ):
         self.enterRule(localctx, 2, self.RULE_preamble)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 22
+            self.state = 29
             self.match(parity_gameParser.T__0)
-            self.state = 23
+            self.state = 30
             self.match(parity_gameParser.NUMBER)
-            self.state = 24
+            self.state = 31
+            self.match(parity_gameParser.T__1)
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class StartContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def start_node(self):
+            return self.getTypedRuleContext(parity_gameParser.Start_nodeContext,0)
+
+
+        def getRuleIndex(self):
+            return parity_gameParser.RULE_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStart" ):
+                listener.enterStart(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStart" ):
+                listener.exitStart(self)
+
+
+
+
+    def start(self):
+
+        localctx = parity_gameParser.StartContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 4, self.RULE_start)
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 33
+            self.match(parity_gameParser.T__2)
+            self.state = 34
+            self.start_node()
+            self.state = 35
             self.match(parity_gameParser.T__1)
         except RecognitionException as re:
             localctx.exception = re
@@ -227,31 +291,31 @@ class parity_gameParser ( Parser ):
     def node(self):
 
         localctx = parity_gameParser.NodeContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 4, self.RULE_node)
+        self.enterRule(localctx, 6, self.RULE_node)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 26
+            self.state = 37
             self.identifier()
-            self.state = 27
+            self.state = 38
             self.parity()
-            self.state = 28
+            self.state = 39
             self.owner()
-            self.state = 29
+            self.state = 40
             self.successors()
-            self.state = 33
+            self.state = 44
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if _la==parity_gameParser.T__2:
-                self.state = 30
-                self.match(parity_gameParser.T__2)
-                self.state = 31
-                self.match(parity_gameParser.NAME)
-                self.state = 32
+            if _la==parity_gameParser.T__3:
+                self.state = 41
                 self.match(parity_gameParser.T__3)
+                self.state = 42
+                self.match(parity_gameParser.NAME)
+                self.state = 43
+                self.match(parity_gameParser.T__4)
 
 
-            self.state = 35
+            self.state = 46
             self.match(parity_gameParser.T__1)
         except RecognitionException as re:
             localctx.exception = re
@@ -292,21 +356,21 @@ class parity_gameParser ( Parser ):
     def successors(self):
 
         localctx = parity_gameParser.SuccessorsContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 6, self.RULE_successors)
+        self.enterRule(localctx, 8, self.RULE_successors)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 37
+            self.state = 48
             self.successor()
-            self.state = 42
+            self.state = 53
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==parity_gameParser.T__4:
-                self.state = 38
-                self.match(parity_gameParser.T__4)
-                self.state = 39
+            while _la==parity_gameParser.T__5:
+                self.state = 49
+                self.match(parity_gameParser.T__5)
+                self.state = 50
                 self.successor()
-                self.state = 44
+                self.state = 55
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -345,10 +409,10 @@ class parity_gameParser ( Parser ):
     def owner(self):
 
         localctx = parity_gameParser.OwnerContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 8, self.RULE_owner)
+        self.enterRule(localctx, 10, self.RULE_owner)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 45
+            self.state = 56
             self.match(parity_gameParser.BOOL)
         except RecognitionException as re:
             localctx.exception = re
@@ -388,11 +452,11 @@ class parity_gameParser ( Parser ):
     def identifier(self):
 
         localctx = parity_gameParser.IdentifierContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 10, self.RULE_identifier)
+        self.enterRule(localctx, 12, self.RULE_identifier)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 47
+            self.state = 58
             _la = self._input.LA(1)
             if not(_la==parity_gameParser.BOOL or _la==parity_gameParser.NUMBER):
                 self._errHandler.recoverInline(self)
@@ -437,11 +501,11 @@ class parity_gameParser ( Parser ):
     def parity(self):
 
         localctx = parity_gameParser.ParityContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 12, self.RULE_parity)
+        self.enterRule(localctx, 14, self.RULE_parity)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 49
+            self.state = 60
             _la = self._input.LA(1)
             if not(_la==parity_gameParser.BOOL or _la==parity_gameParser.NUMBER):
                 self._errHandler.recoverInline(self)
@@ -486,11 +550,60 @@ class parity_gameParser ( Parser ):
     def successor(self):
 
         localctx = parity_gameParser.SuccessorContext(self, self._ctx, self.state)
-        self.enterRule(localctx, 14, self.RULE_successor)
+        self.enterRule(localctx, 16, self.RULE_successor)
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 51
+            self.state = 62
+            _la = self._input.LA(1)
+            if not(_la==parity_gameParser.BOOL or _la==parity_gameParser.NUMBER):
+                self._errHandler.recoverInline(self)
+            else:
+                self._errHandler.reportMatch(self)
+                self.consume()
+        except RecognitionException as re:
+            localctx.exception = re
+            self._errHandler.reportError(self, re)
+            self._errHandler.recover(self, re)
+        finally:
+            self.exitRule()
+        return localctx
+
+
+    class Start_nodeContext(ParserRuleContext):
+
+        def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
+            super().__init__(parent, invokingState)
+            self.parser = parser
+
+        def BOOL(self):
+            return self.getToken(parity_gameParser.BOOL, 0)
+
+        def NUMBER(self):
+            return self.getToken(parity_gameParser.NUMBER, 0)
+
+        def getRuleIndex(self):
+            return parity_gameParser.RULE_start_node
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterStart_node" ):
+                listener.enterStart_node(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitStart_node" ):
+                listener.exitStart_node(self)
+
+
+
+
+    def start_node(self):
+
+        localctx = parity_gameParser.Start_nodeContext(self, self._ctx, self.state)
+        self.enterRule(localctx, 18, self.RULE_start_node)
+        self._la = 0 # Token type
+        try:
+            self.enterOuterAlt(localctx, 1)
+            self.state = 64
             _la = self._input.LA(1)
             if not(_la==parity_gameParser.BOOL or _la==parity_gameParser.NUMBER):
                 self._errHandler.recoverInline(self)

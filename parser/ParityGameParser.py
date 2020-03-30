@@ -5,6 +5,7 @@ from parser.parity_gameListener import parity_gameListener
 from pathlib import Path
 from typing import List, Set, Dict
 from copy import deepcopy
+import re
 
 
 class ParsedNode:
@@ -111,6 +112,7 @@ class ParityGameParser:
 
     @staticmethod
     def parse_string(string):
+        string = re.sub('\[?".*?"\]?', '', string)          # remove commentary
         return ParityGameParser.parse(InputStream(string))
 
     @staticmethod

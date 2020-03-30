@@ -11,24 +11,28 @@ class SmallProgressMeasuresSolver(GameSolver):
         self.V: List[int] = self.game.nodes.keys()
         self.cycle = cycle(self.V)
         self.pi: Dict[int, List[int]] = {}
-        self.max_parity = max(self.game.parities.keys())
+        self.max_parity = max(self.game.parities.keys()) if self.V else 0
         self.failed = 0
         self.player = player
         self.max_pi = [0 for i in range(0, self.max_parity + 1)]
-        for p in self.game.parities.keys():
-            self.max_pi[p] = len(self.game.parities[p])
 
     """
     solve the initialised parity game
     """
     def solve(self):
+        win = []
+        strategy = {}
+
+        if not self.V:
+            return (win,strategy)
+
         for n in self.V:
             self.pi[n] = [0 for i in range(0, self.max_parity + 1)]
 
-        self.small_progress_measures()
+        for p in self.game.parities.keys():
+            self.max_pi[p] = len(self.game.parities[p])
 
-        win = []
-        strategy = {}
+        self.small_progress_measures()
 
         for n in self.V:
             if self.pi[n]:

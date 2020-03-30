@@ -26,6 +26,15 @@ class parity_gameListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by parity_gameParser#start.
+    def enterStart(self, ctx:parity_gameParser.StartContext):
+        pass
+
+    # Exit a parse tree produced by parity_gameParser#start.
+    def exitStart(self, ctx:parity_gameParser.StartContext):
+        pass
+
+
     # Enter a parse tree produced by parity_gameParser#node.
     def enterNode(self, ctx:parity_gameParser.NodeContext):
         pass
@@ -77,6 +86,15 @@ class parity_gameListener(ParseTreeListener):
 
     # Exit a parse tree produced by parity_gameParser#successor.
     def exitSuccessor(self, ctx:parity_gameParser.SuccessorContext):
+        pass
+
+
+    # Enter a parse tree produced by parity_gameParser#start_node.
+    def enterStart_node(self, ctx:parity_gameParser.Start_nodeContext):
+        pass
+
+    # Exit a parse tree produced by parity_gameParser#start_node.
+    def exitStart_node(self, ctx:parity_gameParser.Start_nodeContext):
         pass
 
 
