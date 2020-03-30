@@ -35,6 +35,11 @@ class ParityGame:
 
         return new
 
+    """
+    Create a subgame from this game
+    
+    - a, the set of nodes to remove, as bdd
+    """
     def subgame(self, a):
         remove = set()
         for i in self.bdd.pick_iter(a, care_vars=self.states):
@@ -47,6 +52,11 @@ class ParityGame:
         new_game.populate()
         return new_game
 
+    """
+    create a symbolic parity game from a parsed parity game
+    
+    - parsed_pg, the parsed parity game
+    """
     def from_parsed(self, parsed_pg: ParsedParityGame):
         self.bdd = _bdd.BDD()
         self.variable_size = parsed_pg.size.bit_length()
@@ -70,7 +80,11 @@ class ParityGame:
         self.bdd.declare(*self.variables)
         self.populate()
 
+    """
+    populate the data structures of the parity game
+    """
     def populate(self):
+        # initialise the transition relation with transitions to false for every possible state
         ee: Dict[str, str] = {}
         for i in range(0, 2 ** self.variable_size):
             variable = '(' + self.raw_node_to_variable(i, 0) + ')'
@@ -78,6 +92,7 @@ class ParityGame:
             variable = '(' + self.raw_node_to_variable(i, 1) + ')'
             ee[variable] = "FALSE"
 
+        # create the transitions from the successor set of every vertex
         v = []
         for n in self.parsed_pg.nodes.values():
             variable = '(' + self.node_to_variable(n) + ')'
@@ -88,36 +103,63 @@ class ParityGame:
                 succ.append('(' + self.node_to_variable(self.parsed_pg.nodes[s], True) + ')')
             ee[variable] = "(" + " \/ ".join(succ) + ")"
 
+        # set up the relation
         e = []
         for i in ee.keys():
             # print(i + " => " + ee[i])
             e.append('(' + i + '=>' + ee[i] + ')')
 
+        # finally, fill the sets V, V_0, V_1 and E
         self.V = self.bdd.add_expr(' \/ '.join(v)) if len(v) > 0 else self.bdd.false
         self.V0 = self.V & self.bdd.add_expr('o')
         self.V1 = self.V & self.bdd.add_expr('~o')
         self.E = self.bdd.add_expr(' /\ '.join(e))
 
+        # create a set of nodes for each parity
         for p in self.parsed_pg.parities.keys():
             v = []
             for n in self.parsed_pg.parities[p]:
                 v.append(self.id_to_variable[n])
             self.parities[p] = self.bdd.add_expr(' \/ '.join(v))
 
+    """
+    get the set V_i for a player i
+    
+    - i, the player id
+    """
     def get_vi(self, i: int):
         if i == 0:
             return self.V0
         else:
             return self.V1
 
+    """
+    get the set of vertices with parity p
+    
+    - p, the parity
+    """
     def get_parity(self, p: int):
         if p not in self.parities.keys():
             return self.bdd.false
         return self.parities[p]
 
+
+    """
+    get a boolean expression representing the given vertex
+    
+    - node, the node from the parsed parity game
+    - primed, optional, when the boolean expression should use primed variables
+    """
     def node_to_variable(self, node: ParsedNode, primed=False):
         return self.raw_node_to_variable(node.identifier, node.owner, primed)
 
+    """
+    get a boolean expression representing the given id
+
+    - identifier, the id of the node
+    - owner, the player owning the node
+    - primed, optional, when the boolean expression should use primed variables
+    """
     def raw_node_to_variable(self, identifier: int, owner: int, primed=False):
         v = []
         if primed:
@@ -142,6 +184,12 @@ class ParityGame:
 
         return ' /\ '.join(v)
 
+    """
+    converts a conjunction of boolean variables to a vertex id
+    
+    - variable, the conjunction
+    - primed, whether primed variables should be used
+    """
     def variable_to_identifier(self, variable: Dict[str, bool], primed=False):
         s = ''
         if primed:

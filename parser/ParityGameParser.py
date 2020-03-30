@@ -42,6 +42,9 @@ class ParsedParityGame:
     def add_node(self, node):
         self.nodes[node.identifier] = node
 
+    """
+    populate the data structures of the parity game
+    """
     def populate(self):
         for node in self.nodes.values():
             if node.owner == 0:
@@ -54,6 +57,11 @@ class ParsedParityGame:
             else:
                 self.parities[node.parity].add(node.identifier)
 
+    """
+    create a subgame from the current parity game
+    
+    - remove, the set of nodes to remove
+    """
     def create_subgame(self, remove: Set[int]):
         new = ParsedParityGame()
         new.size = self.size
@@ -64,7 +72,6 @@ class ParsedParityGame:
                 new.add_node(nn)
         new.populate()
         return new
-
 
 
 class ParityGamePrintListener(parity_gameListener):

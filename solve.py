@@ -5,7 +5,13 @@ from qpz import *
 from spm import *
 import argparse
 
+"""
+Prints the winning set for a player.
 
+- game, a symbolic parity game
+- player, the id of the player
+- w, the winning set as bdd
+"""
 def print_result_from_bdd(game, player, w):
     print("Player " + str(player) + " wins from nodes:")
     models = list(game.bdd.pick_iter(w, care_vars=(game.states)))
@@ -15,7 +21,13 @@ def print_result_from_bdd(game, player, w):
         nodes.append(f)
     print("\t {" + ", ".join(str(n) for n in sorted(nodes, reverse=True)) + "}")
 
+"""
+Prints the winning set and strategy for a player
 
+- player, the id of the player
+- w, the winning set as a list of node ids
+- strategy, optional, the winning strategy
+"""
 def print_result_from_graph(player, w, strategy=None):
     print("Player " + str(player) + " wins from nodes:")
     print("\t {" + ", ".join(str(n) for n in sorted(w, reverse=True)) + "}")

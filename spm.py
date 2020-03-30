@@ -18,6 +18,9 @@ class SmallProgressMeasuresSolver(GameSolver):
         for p in self.game.parities.keys():
             self.max_pi[p] = len(self.game.parities[p])
 
+    """
+    solve the initialised parity game
+    """
     def solve(self):
         for n in self.V:
             self.pi[n] = [0 for i in range(0, self.max_parity + 1)]
@@ -35,6 +38,10 @@ class SmallProgressMeasuresSolver(GameSolver):
 
         return (win,strategy)
 
+
+    """
+    perform core small progress measures algorithm
+    """
     def small_progress_measures(self):
         v = self.next_vertex()
 
@@ -47,6 +54,9 @@ class SmallProgressMeasuresSolver(GameSolver):
 
         pass
 
+    """
+    returns whether to progress measures are equal
+    """
     def are_equal(self, left: List[int], right: List[int]):
         if len(left) != len(right):
             return False
@@ -57,6 +67,10 @@ class SmallProgressMeasuresSolver(GameSolver):
 
         return True
 
+
+    """
+    find the strategy for a vertex
+    """
     def find_strategy(self, v: int):
         n = self.game.nodes[v]
         neighbours = {}
@@ -66,6 +80,9 @@ class SmallProgressMeasuresSolver(GameSolver):
         minimum = self.min(list(neighbours.values()))
         return [key for key, value in neighbours.items() if self.are_equal(value, minimum)][0]
 
+    """
+    return the next vertex to try to lift, or -1 if fix point is reached
+    """
     def next_vertex(self):
         if self.failed >= len(self.V):
             return -1
@@ -105,6 +122,9 @@ class SmallProgressMeasuresSolver(GameSolver):
 
         return m
 
+    """
+    the maximum of a list of progress measures
+    """
     def max(self, measures: List[List[int]]):
         current_max = measures[0]
         if not current_max:
@@ -126,6 +146,9 @@ class SmallProgressMeasuresSolver(GameSolver):
 
         return current_max
 
+    """
+    the maximum of a list of progress measures
+    """
     def min(self, measures: List[List[int]]):
         current_min = measures[0]
 
