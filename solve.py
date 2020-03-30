@@ -16,7 +16,7 @@ def print_result_from_bdd(game, player, w):
     print("\t {" + ", ".join(str(n) for n in sorted(nodes, reverse=True)) + "}")
 
 
-def print_result_from_graph(player, w, strategy = None):
+def print_result_from_graph(player, w, strategy=None):
     print("Player " + str(player) + " wins from nodes:")
     print("\t {" + ", ".join(str(n) for n in sorted(w, reverse=True)) + "}")
     steps = []
@@ -31,7 +31,6 @@ def main():
     cmd = argparse.ArgumentParser(prog="solve.py", description="Parity game solver for the Reactive Synthesis lecture")
     g = cmd.add_mutually_exclusive_group(required=True)
     g.add_argument('--zielonka', action='store_true')
-    g.add_argument('--fixpoint', action='store_true')
     g.add_argument('--qpz', action='store_true')
     g.add_argument('--spm', action='store_true')
     cmd.add_argument('file', metavar='FILE', type=str)
@@ -51,9 +50,6 @@ def main():
 
         print_result_from_bdd(game, 0, w0)
         print_result_from_bdd(game, 1, w1)
-
-    elif args.fixpoint:
-        print("Fixpoint is not yet implemented")
 
     elif args.qpz:
         game = ParityGame()
